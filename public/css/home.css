@@ -1,0 +1,10 @@
+h1.fullname { margin-bottom: 0px; }
+h5.jobname { margin-top: 0px; }
+
+.link { text-decoration: none;color: white; }
+.link:hover { background-color: #34495e; transition: background-color 0.5s ease-in-out; }
+.link:visited { color: white }
+
+main {
+    margin-right: 10px;
+}

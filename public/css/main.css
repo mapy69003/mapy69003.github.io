@@ -5,7 +5,7 @@ body {
     color: white;
 }
 
-body:after {
+body::after {
     display: none;
     content: "desktop";
 }
@@ -102,7 +102,7 @@ main { transition: opacity 0.5s;height: 100vh; }
 
     .block {margin-left: 10%;width: 100%;margin-right: 10%;}
 
-    body:after {
+    body::after {
         display: none;
         content: "mobile";
     }

@@ -35,7 +35,7 @@
                 var menuIcon = document.getElementsByClassName('menu-icon')[0];
                 e.preventDefault();
                 var devicetype = window.getComputedStyle(
-                    document.querySelector('body'), ':after'
+                    document.querySelector('body'), '::after'
                 ).getPropertyValue('content');
 
                 if (e.target.pathname === window.location.pathname) {
@@ -46,7 +46,7 @@
                     },
                     e.target.pathname.match(/\/([a-z]*)/)[1], e.target.pathname);
 
-                if (devicetype.match(/"(.*)"/)[1] === 'mobile' && menuIcon && menuIcon.classList.contains('open') === true) {
+                if (devicetype && devicetype.match(/(.*)/)[1] === 'mobile' && menuIcon && menuIcon.classList.contains('open') === true) {
                     document.addEventListener('menuClosed', function() {
                         loadHtml(window.history.state.urlPath);
                     });

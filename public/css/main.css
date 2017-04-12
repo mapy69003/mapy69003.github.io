@@ -19,12 +19,13 @@ nav { position: fixed; }
 
 ul.menu { list-style-type: none; }
 ul.menu li { display: inline; margin-right: 75px; }
-ul.menu li a { text-decoration: none; cursor: pointer; color: white }
-ul.menu li a:visited { color: white; }
+ul.menu li a { text-decoration: none; cursor: pointer; color: rgba(255, 255, 255, 0.5) }
+ul.menu li a.active { color: white; }
+/*ul.menu li a:visited { color: grey; }*/
 
-.fullpage { height: 100vh; width: 100%; display: block; }
+.fullpage { min-height: 100vh; width: 100%; display: block; }
 .vertical-align { display: flex; align-items: center; }
-main { transition: opacity 0.5s;height: 100vh; }
+main { transition: opacity 0.5s;min-height: 100vh; }
 .block { margin-left: 20%; width: 100%; margin-right: 20% }
 
 .menu-icon {
@@ -44,7 +45,7 @@ main { transition: opacity 0.5s;height: 100vh; }
     display: block;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 736px) {
     .menu-icon { display: block; }
 
     @keyframes animation-menu-icon-opening { to { margin-left: 89% }; }
@@ -83,7 +84,8 @@ main { transition: opacity 0.5s;height: 100vh; }
     }
 
     ul.menu li { display: block;margin: 0; }
-    ul.menu li a { color: black !important; font-size: 42px; }
+    ul.menu li a { color: rgba(0,0,0,0.5) !important; font-size: 42px; }
+    ul.menu li a.active { color: black !important; }
 
     @keyframes animationMenuOpening {
         from { left: -89%; }
@@ -100,12 +102,9 @@ main { transition: opacity 0.5s;height: 100vh; }
     .menu-wrapper.open { left: 0% }
     .menu-wrapper.close { left: -89% }
 
-    .block {margin-left: 10%;width: 100%;margin-right: 10%;}
+    .block {margin-left: 15%;width: 100%;margin-right: 10%;}
 
-    body::after {
-        display: none;
-        content: "mobile";
-    }
+    body::after { display: none; content: "mobile"; }
 }
 
 .li-connect-text, .li-connect-text:visited { color: white; }
@@ -120,10 +119,33 @@ h5.jobname { margin-top: 0px; }
 .link:hover { background-color: #34495e; transition: background-color 0.5s ease-in-out; }
 .link:visited { color: white }
 
-main { margin-right: 10px; }
-
 
 /* CONTACT */
 form .form-group { width: 100%; margin-bottom: 30px; }
 form .form-group input, form .form-group button {width: 100%;border: 1px solid white;border-radius: 10px;padding: 5px;}
 form .form-group textarea { min-width: 100%; min-height: 200px; border: 1px solid white;border-radius: 10px; resize: none; }
+
+/* SKILLS */
+#terminal {
+    display: block;
+    background-color: black;
+    width: 100%;
+    min-height: 50vh;
+    padding: 10px;
+    font-size: 32px;
+}
+
+@keyframes blinking {
+  50% { opacity: 0; }
+}
+#terminal .cursor {
+    background-color: white;
+    height: 32px;
+    display: inline-block;
+    width: 1px;
+    animation: blinking 1s linear infinite;
+}
+
+.result {
+    color: #3498db;
+}

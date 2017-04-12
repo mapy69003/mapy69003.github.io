@@ -13,9 +13,14 @@
                 var main = document.getElementsByTagName('main')[0];
                 main.style.opacity = '0';
                 setTimeout(function() {
+                    var page = window.location.pathname.match(/\/([a-z]*)/)[1] || 'home';
+                    if (document.getElementsByClassName('active')[0]) {
+                        document.getElementsByClassName('active')[0].classList.remove('active');
+                    }
+                    document.getElementById(`${page}Link`).classList.add('active');
                     main.innerHTML = e.target.response;
                     main.style.opacity = '1';
-                    document.getElementsByTagName('body')[0].style.backgroundColor = backgroundColors[window.history.state.urlPath.match(/\/([a-z]*)/)[1] || 'home'];
+                    document.getElementsByTagName('body')[0].style.backgroundColor = backgroundColors[page];
                     document.dispatchEvent(new Event('htmlReady'));
                     if (typeof cb === 'function') {
                         cb(e.target.response);
@@ -46,7 +51,10 @@
                     },
                     e.target.pathname.match(/\/([a-z]*)/)[1], e.target.pathname);
 
-                if (devicetype && devicetype.match(/(.*)/)[1] === 'mobile' && menuIcon && menuIcon.classList.contains('open') === true) {
+                if (devicetype &&
+                    (devicetype.match(/(.*)/)[1] === 'mobile' || devicetype.match(/"(.*)"/)[1] === 'mobile') // quick fix
+                    &&
+                    menuIcon && menuIcon.classList.contains('open') === true) {
                     document.addEventListener('menuClosed', function() {
                         loadHtml(window.history.state.urlPath);
                     });
@@ -124,6 +132,16 @@
             }
         });
     }
+
+    window.onpopstate = function() {
+        document.getElementsByTagName('body')[0].style.backgroundColor = backgroundColors[window.location.pathname.match(/\/([a-z]*)/)[1] || 'home'];
+        loadHtml(window.history.state.urlPath, function(html) {
+            var body = document.getElementsByTagName('body')[0];
+            body.style.backgroundColor = backgroundColors[window.location.pathname.match(/\/([a-z]*)/)[1] || 'home'];
+            body.style.transition = 'background-color 1s';
+            body.style.display = 'block';
+        });
+    };
 
     document.addEventListener('htmlReady', function() {
         if (window.location.pathname === '/contact') {

@@ -7,7 +7,7 @@ var commands = [
     "$> cd ../tools",
     "$> ls --all",
     "Git Mongodb Sql PostgreSQL",
-    "$> cd ../operating\ systems & ls",
+    "$> cd ../operating\ systems & ls --all",
     "Windows Unix/Linux(Archlinux,Debian)",
     "$> It seems you have talents too !"
 ];

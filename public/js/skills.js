@@ -6,9 +6,9 @@ var commands = [
     "C/C++ C#/.NET Java(PlayFramework)",
     "$> cd ../tools",
     "$> ls --all",
-    "Git, Mongodb, Sql, PostgreSQL",
-    "$> cd ../operating\ systems",
-    "Windows, Unix/Linux(Archlinux,Debian)",
+    "Git Mongodb Sql PostgreSQL",
+    "$> cd ../operating\ systems & ls",
+    "Windows Unix/Linux(Archlinux,Debian)",
     "$> It seems you have talents too !"
 ];
 
